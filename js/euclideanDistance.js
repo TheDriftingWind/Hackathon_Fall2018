@@ -3,11 +3,13 @@ function populate3BestMatches(){
   //only display top 3 picks
   //get reference to document element
 
-  for(i = 0; i < 3; i++){
+  for(i = 0; i < sortedMatches.length; i++){
     var name = sortedMatches[i].name;
     var desc = sortedMatches[i].desc;
     var party = sortedMatches[i].party;
-    var candidateCard = "<div><h3>" + name + "</h3><h4>Description: </h4><p>" + desc + "</p><h4>Party</h4><p>" + party + "</p></div>";
+    var img = sortedMatches[i].picture;
+    var url = sortedMatches[i].url;
+    var candidateCard = "<h1># " + Number(i+1) + "</h1><div><h3><a href='" + url + "'>" + name + "</a></h3><img src='" + img + "' width='300' height='300'><h4>Description: </h4><p>" + desc + "</p><h4>Party</h4><p>" + party + "</p></div><hr>";
     $('#candidatesDisplay').append(candidateCard);
   }
 }
