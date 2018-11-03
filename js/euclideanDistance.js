@@ -1,12 +1,14 @@
 function populate3BestMatches(){
   var sortedMatches = returnBestMatches();
   //only display top 3 picks
-  document.
+  //get reference to document element
+
   for(i = 0; i < 3; i++){
     var name = sortedMatches[i].name;
     var desc = sortedMatches[i].desc;
     var party = sortedMatches[i].party;
-    var display = "<div><h3>" + name + "</h3></div>"
+    var candidateCard = "<div><h3>" + name + "</h3><h4>Description: </h4><p>" + desc + "</p><h4>Party</h4><p>" + party + "</p></div>";
+    $('#candidatesDisplay').append(candidateCard);
   }
 }
 
@@ -23,8 +25,8 @@ function returnBestMatches(){
 
 function calculateMatches(){
   //pull array from the sessionStorage. The value should be a string with commas seperating numbers
-  // var value = sessionStorage.getItem('userCharacteristics');
-  var value = "1,-2,3,0,2,-3,1"
+  var value = sessionStorage.getItem('userCharacteristics');
+  // var value = "1,-2,3,0,2,-3,1"
   //convert the strings pulled from sessionStorage into arrays
   var array = value.split(',')
   //the converted array represents the users point
@@ -76,4 +78,6 @@ function calculateDistance(point1, point2){
 // var test_p1 = [22, 1, 42, 10];
 // var test_p2 = [20, 0, 36, 8];
 // calculateDistance(test_p1, test_p2);
-returnBestMatches();
+$(document).ready(function(){
+  populate3BestMatches();
+})
